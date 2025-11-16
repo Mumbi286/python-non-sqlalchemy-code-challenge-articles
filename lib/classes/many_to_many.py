@@ -29,6 +29,11 @@ class Magazine:
     def __init__(self, name, category):
         self.name = name
         self.category = category
+        
+        def __str__(self):
+            return f"{self.name} ({self.category})"
+            m1 = Magazine("Vogue", "Fashion")
+            print(m1)   
 
     def articles(self):
         pass
