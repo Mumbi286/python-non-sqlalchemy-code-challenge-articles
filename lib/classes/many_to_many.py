@@ -8,6 +8,11 @@ class Author:
     def __init__(self, name):
         self.name = name
 
+        def __str__(self):
+            return self.name
+            a1= Author("Christine")
+            print(a1)
+
     def articles(self):
         pass
 
