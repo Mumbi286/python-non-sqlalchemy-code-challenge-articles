@@ -1,20 +1,37 @@
 class Article:
+    all_articles = []
     def __init__(self, author, magazine, title):
         self.author = author
         self.magazine = magazine
         self.title = title
+        Article.all.append(self)
+
+        # set_title locks the title after the first assignment
+    def _set_title_(self, title):
+        if hasattr(self, title):
+            return
+        if not isinstance(title, str) or not 5 <= len(title) <= 50:
+            raise ValueError("Title must be a string between 5 and 50 characters.")
+        self.title = title
         
 class Author:
     def __init__(self, name):
+        self._set_name(name)
+
+    def _set_name_(self, name):
+        if hasattr(self, 'name'):
+            return self.name
+        if not isinstance(name, str) or len(name) == 0:
+            raise ValueError("Name must be a non-empty string")
         self.name = name
 
-        def __str__(self):
-            return self.name
-            a1= Author("Christine")
-            print(a1)
+    @property 
+    def name(self):
+        return self.name
 
-    def articles(self):
-        pass
+    # def __str__(self):
+    #     return self.name
+    pass
 
     def magazines(self):
         pass
@@ -30,10 +47,10 @@ class Magazine:
         self.name = name
         self.category = category
         
-        def __str__(self):
-            return f"{self.name} ({self.category})"
-            m1 = Magazine("Vogue", "Fashion")
-            print(m1)   
+    def __str__(self):
+        return f"{self.name} ({self.category})"
+        m1 = Magazine("Vogue", "Fashion")
+        print(m1)   
 
     def articles(self):
         pass
@@ -46,3 +63,6 @@ class Magazine:
 
     def contributing_authors(self):
         pass
+
+author1 = 
+print(author1)
