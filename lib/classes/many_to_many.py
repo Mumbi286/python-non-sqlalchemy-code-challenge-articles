@@ -13,14 +13,43 @@ class Article:
         if not isinstance(title, str) or not 5 <= len(title) <= 50:
             raise ValueError("Title must be a string between 5 and 50 characters.")
         self.title = title
+
+    @property
+    def title(self):
+        return self.title
+    
+    @property
+    def author(self):
+        return self.author
+    
+    @author.setter
+    def author(self, value):
+        if not isinstance(value, Author):
+            raise ValueError("Author must be an instance of Author class.")
+        self.author = value
+
+    @property
+    def magazine(self):
+        return self._magazine
+
+    @magazine.setter
+    def magazine(self, value)
+        if not isinstance(value, Magazine):
+            raise ValueError("Magazine must be a Magazine instance.")
+        self._magazine = value
+
+    def __str__(self):
+        return f"Title: {self.title}, Author:{self.author}, Magazine:{self.magazine}"    
+
         
 class Author:
     def __init__(self, name):
         self._set_name(name)
 
+# _set_name ensures validation and uses hasttr to keep the writable only once
     def _set_name_(self, name):
-        if hasattr(self, 'name'):
-            return self.name
+        if hasattr(self, '_name'):
+            return 
         if not isinstance(name, str) or len(name) == 0:
             raise ValueError("Name must be a non-empty string")
         self.name = name
